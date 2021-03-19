@@ -1,5 +1,3 @@
-# A Typescript, Node and Express powered server that lives alongside a Vue powered client
-
 #### Serve client and server for development and build for production
  - `npm run serve` to run both client & server project concurrently
  - `npm run build` to build both client & server project to dist/
