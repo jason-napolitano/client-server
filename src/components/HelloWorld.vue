@@ -85,7 +85,7 @@ export default defineComponent({
     }
   },
   setup() {
-    const data = axios.get("http://localhost:8080/api/demo.json")
+    const data = axios.get("http://localhost:4900")
 
     const getAllData = () => {
       data

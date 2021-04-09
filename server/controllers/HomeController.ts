@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from "express"
-import config from "../config/server"
+import { Request, Response } from "express"
 
-export const index = (req: Request, res: Response, next: NextFunction) => {
-  res.send({ title: config.title })
+export const index = (req: Request, res: Response) => {
+  const json = require('../models/demo.json')
+  res.send(json)
 }
