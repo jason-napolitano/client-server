@@ -1,6 +1,10 @@
-> A client powered by Vue 3. It uses Bootstrap 5 as the UI library and icons powered by Bootstrap Icons.
+> The client is powered by Vue 3 and uses Bootstrap 5 as the UI library as well as Bootstrap Icons.
 > The server is built using NodeJS and Express. Both client and server portions of the app support 
 > Typescript as well as regular Javascript.
+> 
+> Additional goodies are included like an audio notifier, helper files for **_axios_** and **_sweetalert2_**. Also,
+> included are several packages for data aggregation and presentation such as **_webdatarocks_**, as well as helper 
+> libraries such as **_lodash_** and **_dayjs_**.
 
 #### Serve client and server for development and build for production
  - `npm run serve` to run both client & server project concurrently
