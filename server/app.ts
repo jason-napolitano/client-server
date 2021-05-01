@@ -1,7 +1,11 @@
 // Express app
 import express from "express"
 const cors = require("cors")
+const compression = require("compression")
+var helmet = require('helmet')
 const app = express()
+app.use(compression());
+app.use(helmet());
 app.use(cors());
 
 // Dotenv library

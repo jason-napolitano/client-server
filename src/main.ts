@@ -1,13 +1,13 @@
 // Dependencies
-import "./registerServiceWorker"
 import { createApp } from "vue"
 import App from "./App.vue"
 import router from "./router"
 import store from "./store"
-
-// Bootstrap
 import "@popperjs/core"
 import "bootstrap"
+
+// PWA support
+import "./registerServiceWorker"
 
 // App instance
 createApp(App)
