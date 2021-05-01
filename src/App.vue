@@ -1,7 +1,9 @@
 <template>
-  <div id="app" class="container">
-    <router-view />
-  </div>
+  <main id="app" class="container">
+    <section class="row">
+      <router-view />
+    </section>
+  </main>
 </template>
 
 <script lang="ts">
@@ -12,6 +14,6 @@ export default defineComponent({
 })
 </script>
 
-<style lang="sass">
-@import "assets/scss/app"
+<style lang="scss">
+@import "assets/scss/app";
 </style>

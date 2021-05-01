@@ -5,13 +5,10 @@ const { promises: Fs } = require('fs')
  * Check if a file exists
  *
  * @param path
+ *
+ * @returns {boolean}
  */
 export async function exists(path: string) {
-  try {
-    await Fs.access(path)
-    return true
-  } catch {
-    return false
-  }
+  return !!(await Fs.access(path))
 }
 

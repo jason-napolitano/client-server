@@ -1,13 +1,9 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <ul>
-      <li>
-        <a href="#" @click="isCompositionHome = true">Home with Composition API</a>
-      </li>
-    </ul>
-    <HelloWorldComp v-if="isCompositionHome" msg="[Composition API]: Welcome to Your Vue.js + TypeScript App" />
+  <div class="col-md-2"></div>
+  <div class="col-md-8 text-center">
+    <HelloWorldComp v-if="isCompositionHome" />
   </div>
+  <div class="col-md-2"></div>
 </template>
 
 <script lang="ts">

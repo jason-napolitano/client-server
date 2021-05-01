@@ -1,34 +1,923 @@
-@charset "utf-8";
+/**
+ * ----------------------------------------------------------------------------
+ * Copyright (c) 2020, Jason Napolitano
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ * ----------------------------------------------------------------------------
 
-// Set your brand colors
-$purple: #8A4D76;
-$pink: #FA7C91;
-$brown: #757763;
-$beige-light: #D0D1CD;
-$beige-lighter: #EFF0EB;
+ * EXAMPLE:
+ *
+ * <div class="bg-white text-deepocean box-shadow-bottom padding-10">
+ * 	This will have a white background, dark blue text, a 10px padding and a bottom box shadow applied.
+ * </div>
+ *
+ * @author  Jason Napolitano <mailto:jnapolitanoit@gmail.com>
+ * @link    https://github.com/jason-napolitano
+ * @license MIT
+ */
 
-// Update Bulma's global variables
-$family-sans-serif: sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
-$primary: $purple;
-$link: $pink;
-$widescreen-enabled: true;
-$fullhd-enabled: true;
+// Import colors and fonts
+@import './variables/colors';
 
-// Update some of Bulma's component variables
-$body-background-color: $beige-lighter;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
+// Makes a Bootstrap container full-width on smaller resolutions
+@media (max-width: 991px) {
+  .container {
+    max-width: 100% !important;
+  }
+}
 
-// Import only what you need from Bulma
-@import "../../../node_modules/bulma/sass/utilities/_all.sass";
-@import "../../../node_modules/bulma/sass/base/_all.sass";
-@import "../../../node_modules/bulma/sass/elements/button.sass";
-@import "../../../node_modules/bulma/sass/elements/container.sass";
-@import "../../../node_modules/bulma/sass/elements/title.sass";
-@import "../../../node_modules/bulma/sass/form/_all.sass";
-@import "../../../node_modules/bulma/sass/components/navbar.sass";
-@import "../../../node_modules/bulma/sass/layout/hero.sass";
-@import "../../../node_modules/bulma/sass/layout/section.sass";
+// Hide elements
+.hidden {
+  display: none !important;
+}
+
+// Removes elements with this class from the print screen
+@media print {
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+}
+
+/*
+ * Border properties
+ */
+
+// Remove border radius
+.no-br {
+  border-radius: 0 !important;
+}
+
+// Top left
+.no-br-tl {
+  border-top-left-radius: 0 !important;
+}
+
+// Top right
+.no-br-tr {
+  border-top-right-radius: 0 !important;
+}
+
+// Bottom left
+.no-br-bl {
+  border-bottom-left-radius: 0 !important;
+}
+
+// Bottom right
+.no-br-br {
+  border-bottom-right-radius: 0 !important;
+}
+
+// Force a borderless element
+.borderless {
+  border: none !important;
+}
+
+// BOX SHADOWS
+.box-shadow-bottom {
+  -webkit-box-shadow: 0 7px 5px -2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 7px 5px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 7px 5px -2px rgba(0, 0, 0, 0.6);
+}
+.box-shadow-bottom-squared {
+  -webkit-box-shadow: 0 10px 3px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 10px 3px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 10px 3px -5px rgba(0, 0, 0, 0.75);
+}
+.box-shadow-top {
+  -webkit-box-shadow: 0 -7px 5px -2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 -7px 5px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 -7px 5px -2px rgba(0, 0, 0, 0.6);
+}
+.box-shadow-top-squared {
+  -webkit-box-shadow: 0 -10px 3px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 -10px 3px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 -10px 3px -5px rgba(0, 0, 0, 0.75);
+}
+.box-shadow-right {
+  -webkit-box-shadow: 7px 0 5px -2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 7px 0 5px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: 7px 0 5px -2px rgba(0, 0, 0, 0.6);
+}
+.box-shadow-left {
+  -webkit-box-shadow: -7px 0 5px -2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: -7px 0 5px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: -7px 0 5px -2px rgba(0, 0, 0, 0.6);
+}
+.box-shadow-bottom-inset {
+  -webkit-box-shadow: inset 0 -6px 5px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0 -6px 5px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 -6px 5px 0 rgba(0, 0, 0, 0.75);
+}
+.box-shadow-top-inset {
+  -webkit-box-shadow: inset 0 -7px 5px -2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: inset 0 -7px 5px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 -7px 5px -2px rgba(0, 0, 0, 0.6);
+}
+.box-shadow-right-inset {
+  -webkit-box-shadow: inset 7px 0 5px -2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: inset 7px 0 5px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 7px 0 5px -2px rgba(0, 0, 0, 0.6);
+}
+.box-shadow-left-inset {
+  -webkit-box-shadow: inset -7px 0 5px -2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: inset -7px 0 5px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: inset -7px 0 5px -2px rgba(0, 0, 0, 0.6);
+}
+.box-shadow-none {
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+// BACKGROUND COLORS
+.bg-transparent {
+  background-color: transparent !important;
+  transition: all 0.35s ease-in;
+}
+.bg-charcoal {
+  background-color: $color-charcoal !important;
+  transition: all 0.35s ease-in;
+}
+.bg-dark-grey {
+  background-color: $color-dark-grey !important;
+  transition: all 0.35s ease-in;
+}
+.bg-grey {
+  background-color: $color-grey !important;
+  transition: all 0.35s ease-in;
+}
+.bg-black {
+  background-color: $color-black !important;
+  transition: all 0.35s ease-in;
+}
+.bg-dark {
+  background-color: $color-black !important;
+  transition: all 0.35s ease-in;
+}
+.bg-white {
+  background-color: $color-white !important;
+  transition: all 0.35s ease-in;
+}
+.bg-barely-white {
+  background-color: $color-barely-white !important;
+  transition: all 0.35s ease-in;
+}
+.bg-offwhite {
+  background-color: $color-offwhite !important;
+  transition: all 0.35s ease-in;
+}
+.bg-barely-grey {
+  background-color: $color-barely-grey !important;
+  transition: all 0.35s ease-in;
+}
+.bg-clouds {
+  background-color: $color-clouds !important;
+  transition: all 0.35s ease-in;
+}
+.bg-silver {
+  background-color: $color-silver !important;
+  transition: all 0.35s ease-in;
+}
+.bg-concrete {
+  background-color: $color-concrete !important;
+  transition: all 0.35s ease-in;
+}
+.bg-asbestos {
+  background-color: $color-asbestos !important;
+  transition: all 0.35s ease-in;
+}
+.bg-tan {
+  background-color: $color-tan !important;
+  transition: all 0.35s ease-in;
+}
+.bg-pewter {
+  background-color: $color-pewter !important;
+  transition: all 0.35s ease-in;
+}
+.bg-dusk {
+  background-color: $color-dusk !important;
+  transition: all 0.35s ease-in;
+}
+.bg-morning {
+  background-color: $color-morning !important;
+  transition: all 0.35s ease-in;
+}
+.bg-noon {
+  background-color: $color-noon !important;
+  transition: all 0.35s ease-in;
+}
+.bg-midnight {
+  background-color: $color-midnight !important;
+  transition: all 0.35s ease-in;
+}
+.bg-dawn {
+  background-color: $color-dawn !important;
+  transition: all 0.35s ease-in;
+}
+.bg-salmon {
+  background-color: $color-salmon !important;
+  transition: all 0.35s ease-in;
+}
+.bg-moonlight {
+  background-color: $color-moonlight !important;
+  transition: all 0.35s ease-in;
+}
+.bg-deepocean {
+  background-color: $color-deepocean !important;
+  transition: all 0.35s ease-in;
+}
+.bg-turquoise {
+  background-color: $color-turquoise !important;
+  transition: all 0.35s ease-in;
+}
+.bg-aqua {
+  background-color: $color-aqua !important;
+  transition: all 0.35s ease-in;
+}
+.bg-highlighter {
+  background-color: $color-highlighter !important;
+  transition: all 0.35s ease-in;
+  padding: 4px !important;
+}
+.bg-sunflower {
+  background-color: $color-sunflower !important;
+  transition: all 0.35s ease-in;
+}
+.bg-grass {
+  background-color: $color-grass !important;
+  transition: all 0.35s ease-in;
+}
+.bg-orange {
+  background-color: $color-orange !important;
+  transition: all 0.35s ease-in;
+}
+.bg-sienna {
+  background-color: $color-sienna !important;
+  transition: all 0.35s ease-in;
+}
+.bg-milanored {
+  background-color: $color-milanored !important;
+  transition: all 0.35s ease-in;
+}
+.bg-river {
+  background-color: $color-river !important;
+  transition: all 0.35s ease-in;
+}
+.bg-marina {
+  background-color: $color-marina !important;
+  transition: all 0.35s ease-in;
+}
+.bg-deco {
+  background-color: $color-deco !important;
+  transition: all 0.35s ease-in;
+}
+.bg-crete {
+  background-color: $color-crete !important;
+  transition: all 0.35s ease-in;
+}
+.bg-lime {
+  background-color: $color-lime !important;
+  transition: all 0.35s ease-in;
+}
+.bg-guardsman {
+  background-color: $color-guardsman !important;
+  transition: all 0.35s ease-in;
+}
+.bg-pomegranate {
+  background-color: $color-pomegranate !important;
+  transition: all 0.35s ease-in;
+}
+.bg-finn {
+  background-color: $color-finn !important;
+  transition: all 0.35s ease-in;
+}
+.bg-tamarind {
+  background-color: $color-tamarind !important;
+  transition: all 0.35s ease-in;
+}
+.bg-salmon {
+  background-color: $color-salmon !important;
+  transition: all 0.35s ease-in;
+}
+
+.bg-info-flat {
+  background-color: $color-flat-blue !important;
+  transition: all 0.35s ease-in;
+}
+
+.bg-danger-flat {
+  background-color: $color-flat-red !important;
+  transition: all 0.35s ease-in;
+}
+
+.bg-warning-flat {
+  background-color: $color-flat-orange !important;
+  transition: all 0.35s ease-in;
+}
+
+.bg-success-flat {
+  background-color: $color-flat-green !important;
+  transition: all 0.35s ease-in;
+}
+
+// BACKGROUND COLORS (HOVERS)
+.bg-transparent-hover:hover {
+  background-color: transparent !important;
+  transition: all 0.35s ease-out;
+}
+.bg-black-hover:hover {
+  background-color: $color-black !important;
+  transition: all 0.35s ease-out;
+}
+.bg-charcoal:hover {
+  background-color: $color-charcoal !important;
+  transition: all 0.35s ease-in;
+}
+.bg-dark-grey:hover {
+  background-color: $color-dark-grey !important;
+  transition: all 0.35s ease-in;
+}
+.bg-white-hover:hover {
+  background-color: $color-white !important;
+  transition: all 0.35s ease-out;
+}
+.bg-offwhite-hover:hover {
+  background-color: $color-offwhite !important;
+  transition: all 0.35s ease-out;
+}
+.bg-clouds-hover:hover {
+  background-color: $color-clouds !important;
+  transition: all 0.35s ease-out;
+}
+.bg-silver-hover:hover {
+  background-color: $color-silver !important;
+  transition: all 0.35s ease-out;
+}
+.bg-concrete-hover:hover {
+  background-color: $color-concrete !important;
+  transition: all 0.35s ease-out;
+}
+.bg-asbestos-hover:hover {
+  background-color: $color-asbestos !important;
+  transition: all 0.35s ease-out;
+}
+.bg-tan-hover:hover {
+  background-color: $color-tan !important;
+  transition: all 0.35s ease-out;
+}
+.bg-pewter-hover:hover {
+  background-color: $color-pewter !important;
+  transition: all 0.35s ease-out;
+}
+.bg-moonlight-hover:hover {
+  background-color: $color-moonlight !important;
+  transition: all 0.35s ease-out;
+}
+.bg-deepocean-hover:hover {
+  background-color: $color-deepocean !important;
+  transition: all 0.35s ease-out;
+}
+.bg-turquoise-hover:hover {
+  background-color: $color-turquoise !important;
+  transition: all 0.35s ease-out;
+}
+.bg-aqua-hover:hover {
+  background-color: $color-aqua !important;
+  transition: all 0.35s ease-out;
+}
+.bg-sunflower-hover:hover {
+  background-color: $color-sunflower !important;
+  transition: all 0.35s ease-out;
+}
+.bg-orange-hover:hover {
+  background-color: $color-orange !important;
+  transition: all 0.35s ease-out;
+}
+.bg-sienna-hover:hover {
+  background-color: $color-sienna !important;
+  transition: all 0.35s ease-out;
+}
+.bg-milanored-hover:hover {
+  background-color: $color-milanored !important;
+  transition: all 0.35s ease-out;
+}
+.bg-river-hover:hover {
+  background-color: $color-river !important;
+  transition: all 0.35s ease-out;
+}
+.bg-marina-hover:hover {
+  background-color: $color-marina !important;
+  transition: all 0.35s ease-out;
+}
+.bg-deco-hover:hover {
+  background-color: $color-deco !important;
+  transition: all 0.35s ease-out;
+}
+.bg-crete-hover:hover {
+  background-color: $color-crete !important;
+  transition: all 0.35s ease-out;
+}
+.bg-guardsman-hover:hover {
+  background-color: $color-guardsman !important;
+  transition: all 0.35s ease-out;
+}
+.bg-pomegranate-hover:hover {
+  background-color: $color-pomegranate !important;
+  transition: all 0.35s ease-out;
+}
+.bg-finn-hover:hover {
+  background-color: $color-finn !important;
+  transition: all 0.35s ease-out;
+}
+.bg-tamarind-hover:hover {
+  background-color: $color-tamarind !important;
+  transition: all 0.35s ease-out;
+}
+.bg-image-cover {
+  background: center center no-repeat;
+  background-size: cover;
+}
+
+.bg-info-flat-hover:hover {
+  background-color: $color-flat-blue !important;
+  transition: all 0.35s ease-out;
+}
+
+.bg-danger-flat-hover:hover {
+  background-color: $color-flat-red !important;
+  transition: all 0.35s ease-out;
+}
+
+.bg-warning-flat-hover:hover {
+  background-color: $color-flat-orange !important;
+  transition: all 0.35s ease-out;
+}
+
+.bg-success-flat-hover:hover {
+  background-color: $color-flat-green !important;
+  transition: all 0.35s ease-out;
+}
+
+// TEXT COLORS / POSITIONS
+.text-left {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.text-justify {
+  text-align: justify !important;
+}
+
+.text-black {
+  color: $color-black !important;
+  transition: all 0.35s ease-in;
+}
+.text-charcoal {
+  color: $color-charcoal !important;
+  transition: all 0.35s ease-in;
+}
+.text-dark-grey {
+  color: $color-dark-grey !important;
+  transition: all 0.35s ease-in;
+}
+.text-grey {
+  color: $color-grey !important;
+  transition: all 0.35s ease-in;
+}
+.text-white {
+  color: $color-white !important;
+  transition: all 0.35s ease-in;
+}
+.text-barely-white {
+  color: $color-barely-white !important;
+  transition: all 0.35s ease-in;
+}
+.text-offwhite {
+  color: $color-offwhite !important;
+  transition: all 0.35s ease-in;
+}
+.text-barely-grey {
+  color: $color-barely-grey !important;
+  transition: all 0.35s ease-in;
+}
+.text-clouds {
+  color: $color-clouds !important;
+  transition: all 0.35s ease-in;
+}
+.text-silver {
+  color: $color-silver !important;
+  transition: all 0.35s ease-in;
+}
+.text-concrete {
+  color: $color-concrete !important;
+  transition: all 0.35s ease-in;
+}
+.text-asbestos {
+  color: $color-asbestos !important;
+  transition: all 0.35s ease-in;
+}
+.text-tan {
+  color: $color-tan !important;
+  transition: all 0.35s ease-in;
+}
+.text-pewter {
+  color: $color-pewter !important;
+  transition: all 0.35s ease-in;
+}
+.text-salmon {
+  color: $color-salmon !important;
+  transition: all 0.35s ease-in;
+}
+.text-moonlight {
+  color: $color-moonlight !important;
+  transition: all 0.35s ease-in;
+}
+.text-deepocean {
+  color: $color-deepocean !important;
+  transition: all 0.35s ease-in;
+}
+.text-turquoise {
+  color: $color-turquoise !important;
+  transition: all 0.35s ease-in;
+}
+.text-aqua {
+  color: $color-aqua !important;
+  transition: all 0.35s ease-in;
+}
+.text-grass {
+  color: $color-grass !important;
+  transition: all 0.35s ease-in;
+}
+.text-sunflower {
+  color: $color-sunflower !important;
+  transition: all 0.35s ease-in;
+}
+.text-orange {
+  color: $color-orange !important;
+  transition: all 0.35s ease-in;
+}
+.text-sienna {
+  color: $color-sienna !important;
+  transition: all 0.35s ease-in;
+}
+.text-milanored {
+  color: $color-milanored !important;
+  transition: all 0.35s ease-in;
+}
+.text-river {
+  color: $color-river !important;
+  transition: all 0.35s ease-in;
+}
+.text-marina {
+  color: $color-marina !important;
+  transition: all 0.35s ease-in;
+}
+.text-deco {
+  color: $color-deco !important;
+  transition: all 0.35s ease-in;
+}
+.text-crete {
+  color: $color-crete !important;
+  transition: all 0.35s ease-in;
+}
+.text-guardsman {
+  color: $color-guardsman !important;
+  transition: all 0.35s ease-in;
+}
+.text-pomegranate {
+  color: $color-pomegranate !important;
+  transition: all 0.35s ease-in;
+}
+.text-finn {
+  color: $color-finn !important;
+  transition: all 0.35s ease-in;
+}
+.text-tamarind {
+  color: $color-tamarind !important;
+  transition: all 0.35s ease-in;
+}
+.text-salmon {
+  color: $color-salmon !important;
+  transition: all 0.35s ease-in;
+}
+
+.text-info-flat {
+  color: $color-flat-blue !important;
+  transition: all 0.35s ease-in;
+}
+
+.text-danger-flat {
+  color: $color-flat-red !important;
+  transition: all 0.35s ease-in;
+}
+
+.text-warning-flat {
+  color: $color-flat-orange !important;
+  transition: all 0.35s ease-in;
+}
+
+.text-success-flat {
+  color: $color-flat-green !important;
+  transition: all 0.35s ease-in;
+}
+
+// TEXT COLORS (HOVER)
+.text-black-hover:hover {
+  color: $color-black !important;
+  transition: all 0.35s ease-out;
+}
+.text-charcoal:hover {
+  color: $color-charcoal !important;
+  transition: all 0.35s ease-in;
+}
+.text-dark-grey:hover {
+  color: $color-dark-grey !important;
+  transition: all 0.35s ease-in;
+}
+.text-white-hover:hover {
+  color: $color-white !important;
+  transition: all 0.35s ease-out;
+}
+.text-offwhite-hover:hover {
+  color: $color-offwhite !important;
+  transition: all 0.35s ease-out;
+}
+.text-clouds-hover:hover {
+  color: $color-clouds !important;
+  transition: all 0.35s ease-out;
+}
+.text-silver-hover:hover {
+  color: $color-silver !important;
+  transition: all 0.35s ease-out;
+}
+.text-concrete-hover:hover {
+  color: $color-concrete !important;
+  transition: all 0.35s ease-out;
+}
+.text-asbestos-hover:hover {
+  color: $color-asbestos !important;
+  transition: all 0.35s ease-out;
+}
+.text-tan-hover:hover {
+  color: $color-tan !important;
+  transition: all 0.35s ease-out;
+}
+.text-pewter-hover:hover {
+  color: $color-pewter !important;
+  transition: all 0.35s ease-out;
+}
+.text-moonlight-hover:hover {
+  color: $color-moonlight !important;
+  transition: all 0.35s ease-out;
+}
+.text-deepocean-hover:hover {
+  color: $color-deepocean !important;
+  transition: all 0.35s ease-out;
+}
+.text-turquoise-hover:hover {
+  color: $color-turquoise !important;
+  transition: all 0.35s ease-out;
+}
+.text-aqua-hover:hover {
+  color: $color-aqua !important;
+  transition: all 0.35s ease-out;
+}
+.text-sunflower-hover:hover {
+  color: $color-sunflower !important;
+  transition: all 0.35s ease-out;
+}
+.text-orange-hover:hover {
+  color: $color-orange !important;
+  transition: all 0.35s ease-out;
+}
+.text-sienna-hover:hover {
+  color: $color-sienna !important;
+  transition: all 0.35s ease-out;
+}
+.text-milanored-hover:hover {
+  color: $color-milanored !important;
+  transition: all 0.35s ease-out;
+}
+.text-river-hover:hover {
+  color: $color-river !important;
+  transition: all 0.35s ease-out;
+}
+.text-marina-hover:hover {
+  color: $color-marina !important;
+  transition: all 0.35s ease-out;
+}
+.text-deco-hover:hover {
+  color: $color-deco !important;
+  transition: all 0.35s ease-out;
+}
+.text-crete-hover:hover {
+  color: $color-crete !important;
+  transition: all 0.35s ease-out;
+}
+.text-guardsman-hover:hover {
+  color: $color-guardsman !important;
+  transition: all 0.35s ease-out;
+}
+.text-pomegranate-hover:hover {
+  color: $color-pomegranate !important;
+  transition: all 0.35s ease-out;
+}
+.text-finn-hover:hover {
+  color: $color-finn !important;
+  transition: all 0.35s ease-out;
+}
+.text-tamarind-hover:hover {
+  color: $color-tamarind !important;
+  transition: all 0.35s ease-out;
+}
+
+.text-info-flat-hover:hover {
+  color: $color-flat-blue !important;
+  transition: all 0.35s ease-in;
+}
+
+.text-danger-flat-hover:hover {
+  color: $color-flat-red !important;
+  transition: all 0.35s ease-in;
+}
+
+.text-warning-flat-hover:hover {
+  color: $color-flat-orange !important;
+  transition: all 0.35s ease-in;
+}
+
+.text-success-flat-hover:hover {
+  color: $color-flat-green !important;
+  transition: all 0.35s ease-in;
+}
+
+// Font-weights
+.lighter {
+  font-weight: lighter !important;
+}
+.bold {
+  font-weight: bold !important;
+}
+.bolder {
+  font-weight: bolder !important;
+}
+.normal {
+  font-weight: normal !important;
+}
+
+// HEIGHT
+.min-height-5px {
+  min-height: 5px !important;
+}
+.min-height-10px {
+  min-height: 5px !important;
+}
+.min-height-15px {
+  min-height: 5px !important;
+}
+.min-height-20px {
+  min-height: 5px !important;
+}
+.min-height-25px {
+  min-height: 5px !important;
+}
+.min-height-5rem {
+  min-height: 5px !important;
+}
+.min-height-10rem {
+  min-height: 5px !important;
+}
+.min-height-15rem {
+  min-height: 5px !important;
+}
+.min-height-20rem {
+  min-height: 5px !important;
+}
+.min-height-25rem {
+  min-height: 5px !important;
+}
+
+// CURSORS
+.cursor-move {
+  cursor: move !important;
+}
+.cursor-default {
+  cursor: default !important;
+}
+.cursor-pointer {
+  cursor: pointer !important;
+}
+.cursor-progress {
+  cursor: progress !important;
+}
+.cursor-zoom-in {
+  cursor: zoom-in !important;
+}
+.cursor-zoom-out {
+  cursor: zoom-out !important;
+}
+.cursor-zoom-out {
+  cursor: zoom-out !important;
+}
+
+// FONT SIZES
+.text-100em {
+  font-size: 1em !important;
+}
+.text-115em {
+  font-size: 1.15em !important;
+}
+.text-120em {
+  font-size: 1.2em !important;
+}
+.text-125em {
+  font-size: 1.25em !important;
+}
+.text-130em {
+  font-size: 1.3em !important;
+}
+.text-135em {
+  font-size: 1.35em !important;
+}
+.text-140em {
+  font-size: 1.4em !important;
+}
+.text-145em {
+  font-size: 1.45em !important;
+}
+.text-150em {
+  font-size: 1.5em !important;
+}
+.text-175em {
+  font-size: 1.75em !important;
+}
+.text-200em {
+  font-size: 2em !important;
+}
+.text-100rem {
+  font-size: 1rem !important;
+}
+.text-115rem {
+  font-size: 1.15rem !important;
+}
+.text-120rem {
+  font-size: 1.2rem !important;
+}
+.text-125rem {
+  font-size: 1.25rem !important;
+}
+.text-130rem {
+  font-size: 1.3rem !important;
+}
+.text-135rem {
+  font-size: 1.35rem !important;
+}
+.text-140rem {
+  font-size: 1.4rem !important;
+}
+.text-145em {
+  font-size: 1.45rem !important;
+}
+.text-150rem {
+  font-size: 1.5rem !important;
+}
+.text-175rem {
+  font-size: 1.75rem !important;
+}
+.text-200rem {
+  font-size: 2rem !important;
+}
+
+// Z-INDEX'S
+.z-index-99999 {
+  z-index: 99999 !important;
+}
+.z-index-9999 {
+  z-index: 9999 !important;
+}
+.z-index-999 {
+  z-index: 999 !important;
+}
+.z-index-99 {
+  z-index: 99 !important;
+}
+.z-index-9 {
+  z-index: 99 !important;
+}
+.z-index-0 {
+  z-index: 0 !important;
+}
+.z-index-neg-1 {
+  z-index: -1 !important;
+}
+.z-index-auto {
+  z-index: auto !important;
+}
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "~bootstrap/scss/bootstrap";
