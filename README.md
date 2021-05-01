@@ -7,8 +7,8 @@
  - `npm run build` to build both client & server project to dist/
 
 #### Development build for both client and server
- - `npm run dev:client` to run client project.
- - `npm run dev:server` to run server project.  
+ - `npm run serve:client` to run client project.
+ - `npm run serve:server` to run server project.  
 
 
 #### Production build or both client & server
