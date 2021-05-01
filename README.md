@@ -4,7 +4,10 @@
 > 
 > Additional goodies are included like an audio notifier, helper files for **_axios_** and **_sweetalert2_**. Also,
 > included are several packages for data aggregation and presentation such as **_webdatarocks_**, as well as helper 
-> libraries such as **_lodash_** and **_dayjs_**.
+> libraries such as **_uuid_**, **_bcrypt_**, **_argon2_**, **_lodash_** and **_dayjs_**.
+> 
+> Support and packages for **_sockets.io_** and **_peer_** allow for web socket technology to be used between your client
+> and server. Enabling the possibility of real-time client to server communications.
 
 #### Serve client and server for development and build for production
  - `npm run serve` to run both client & server project concurrently
