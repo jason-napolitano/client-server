@@ -1,8 +1,8 @@
 // ----------------------------------------------------------------------------
 // MP3 Files
-import successSound from './audio/success.mp3'
-import failureSound from './audio/failure.mp3'
-import notifySound from './audio/notify.mp3'
+const successSound = require('./audio/success.mp3')
+const failureSound = require('./audio/failure.mp3')
+const notifySound = require('./audio/notify.mp3')
 
 const notify = (type = 'notify') => {
   let audio

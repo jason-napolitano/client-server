@@ -1,10 +1,10 @@
 import SweetAlert from 'sweetalert2'
-import config from './config.js'
+import config from './config'
 
-const Swal = SweetAlert
+const Swal = SweetAlert // @ts-ignore
 const alert = Swal.mixin(config)
 
-const swal = (title, message = '', config = { /* ... */ }) => {
+const swal = (title = '', message = '', config = { /* ... */ }) => {
   const newConfig = { title: title, text: message, ...config }
   alert.fire(newConfig).then()
 }

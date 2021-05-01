@@ -15,6 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
+import notify from "@/utils/notifications"
 import axios from "@/utils/axios"
 
 export default defineComponent({
@@ -32,6 +33,7 @@ export default defineComponent({
       await data
         .then(response => response.data)
         .then(data => console.table(data))
+        .then(() => notify())
         .catch(err => console.error(err))
     }
 
