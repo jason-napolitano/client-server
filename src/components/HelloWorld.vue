@@ -5,7 +5,7 @@
   <div class="alert lead">
     Get all data from the NodeJS API, and send it to the <code>console</code>
   </div>
-  <div>
+  <div class="alert lead">
     <span class="bi bi-arrow-down"></span>
   </div>
   <div>
@@ -32,9 +32,14 @@ export default defineComponent({
     const getAllData = async () => {
       await data
         .then(response => response.data)
-        .then(data => console.table(data))
-        .then(() => notify())
-        .catch(err => console.error(err))
+        .then(data => {
+          console.table(data)
+          notify('success')
+        })
+        .catch(err => {
+          console.error(err)
+          notify('error')
+        })
     }
 
     return {
