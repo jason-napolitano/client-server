@@ -7,9 +7,9 @@
   "scripts": {
     "serve": "concurrently \"npm run dev:server\" \"npm run dev:client\" --raw",
     "build": "concurrently \"npm run build:server\" \"npm run build:client\"",
-    "dev:client": "vue-cli-service serve",
+    "serve:client": "vue-cli-service serve",
     "build:client": "vue-cli-service build",
-    "dev:server": "nodemon --config ./nodemon.config.json",
+    "serve:server": "nodemon --config ./nodemon.config.json",
     "build:server": "rimraf dist/server && tsc -p tsconfig.server.json",
     "lint": "vue-cli-service lint"
   },
