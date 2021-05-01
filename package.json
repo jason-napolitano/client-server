@@ -5,7 +5,7 @@
   "private": true,
   "author": "@chineselaundry",
   "scripts": {
-    "serve": "concurrently \"npm run dev:server\" \"npm run dev:client\" --raw",
+    "serve": "concurrently \"npm run serve:server\" \"npm run serve:client\" --raw",
     "build": "concurrently \"npm run build:server\" \"npm run build:client\"",
     "serve:client": "vue-cli-service serve",
     "build:client": "vue-cli-service build",
