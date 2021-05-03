@@ -2,7 +2,7 @@
 import express from "express"
 const cors = require("cors")
 const compression = require("compression")
-const config = require('./config/server')
+const config = require("./config/server")
 var helmet = require('helmet')
 const app = express()
 app.use(compression());
