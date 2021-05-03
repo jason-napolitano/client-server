@@ -52,11 +52,11 @@ export default {
   setup () {
     const table = null
     const customizeToolbar = (toolbar) => {
-      // get all tabs
       if (this.toolbar) {
+        // get all tabs
         const tabs = toolbar.getTabs()
         toolbar.getTabs = function () {
-          // There will be two new tabs at the beginning of
+          // There will be a new tab at the beginning of
           // the Toolbar
           tabs.unshift({
             id: 'tab-expand',
@@ -64,6 +64,7 @@ export default {
             handler: expandAllData,
             icon: this.icons.fullscreen
           })
+
           // CUSTOM =====================
           // delete tabs[0] // Expand
           // DEFAULT ====================
@@ -75,6 +76,7 @@ export default {
           // delete tabs[6] // Options
           // delete tabs[7] // Fields
           // delete tabs[8] // Fullscreen
+
           return tabs
         }
       }
