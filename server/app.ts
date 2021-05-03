@@ -1,12 +1,15 @@
-// Express app
+// Dependencies
 import express from "express"
 const cors = require("cors")
 const compression = require("compression")
+const config = require('./config')
 var helmet = require('helmet')
 const app = express()
 app.use(compression());
 app.use(helmet());
-app.use(cors());
+
+// Global CORS (CORS Package)
+app.use(cors(config.corsOptions))
 
 // Dotenv library
 import dotenv from "dotenv"
@@ -24,11 +27,6 @@ appRoutes(app)
 import bodyParser from "body-parser"
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
 
 // App configuration
 app.set("port", process.env.SERVER_PORT || 4900)
