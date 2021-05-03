@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import WebDataRocks from 'webdatarocks'
+import PivotTable from 'webdatarocks'
 export default {
   props: {
     afterchartdraw: Function,
@@ -49,8 +49,12 @@ export default {
     update: Function,
     width: [Number, String]
   },
+  setup () {
+    const table = null
+    return { table }
+  },
   mounted () {
-    this.webdatarocks = new WebDataRocks({
+    this.table = new PivotTable({
       ...this.$props,
       container: this.$el
     })
