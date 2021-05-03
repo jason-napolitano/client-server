@@ -51,7 +51,7 @@ export default {
   },
   setup () {
     const table = null
-    const customizeToolbar (toolbar) {
+    const customizeToolbar = (toolbar) => {
       // get all tabs
       if (this.toolbar) {
         const tabs = toolbar.getTabs()
@@ -64,10 +64,8 @@ export default {
             handler: expandAllData,
             icon: this.icons.fullscreen
           })
-
           // CUSTOM =====================
           // delete tabs[0] // Expand
-
           // DEFAULT ====================
           // delete tabs[1] // Connect
           // delete tabs[2] // Open
@@ -84,8 +82,8 @@ export default {
         this.table.expandAllData(true)
       }
     }
-    
-    return { table }
+
+    return { customizeToolbar, table }
   },
   mounted () {
     this.table = new PivotTable({
