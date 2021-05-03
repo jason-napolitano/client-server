@@ -51,12 +51,47 @@ export default {
   },
   setup () {
     const table = null
+    const customizeToolbar (toolbar) {
+      // get all tabs
+      if (this.toolbar) {
+        const tabs = toolbar.getTabs()
+        toolbar.getTabs = function () {
+          // There will be two new tabs at the beginning of
+          // the Toolbar
+          tabs.unshift({
+            id: 'tab-expand',
+            title: 'Expand',
+            handler: expandAllData,
+            icon: this.icons.fullscreen
+          })
+
+          // CUSTOM =====================
+          // delete tabs[0] // Expand
+
+          // DEFAULT ====================
+          // delete tabs[1] // Connect
+          // delete tabs[2] // Open
+          // delete tabs[4] // Save
+          // delete tabs[4] // Export
+          // delete tabs[5] // Format
+          // delete tabs[6] // Options
+          // delete tabs[7] // Fields
+          // delete tabs[8] // Fullscreen
+          return tabs
+        }
+      }
+      const expandAllData = () => {
+        this.table.expandAllData(true)
+      }
+    }
+    
     return { table }
   },
   mounted () {
     this.table = new PivotTable({
       ...this.$props,
-      container: this.$el
+      container: this.$el,
+      beforetoolbarcreated: this.customizeToolbar
     })
   },
   beforeUpdate () {
